@@ -4,13 +4,8 @@
 
 <head>
     <title>Artistic Page</title>
-
+    <link rel="stylesheet" href="my_style.css">
     <style>
-        body
-        {
-            background-color: bisque;
-        }
-
         .centered_box
         {
             display: flex;
@@ -91,8 +86,9 @@
 
 <body>
     <nav>
+        <a href="index.html">Home Page</a>
         <a href="my_vacation.html">Vacation to Italy</a>
-        <a href="my_artistic_self.html">My Artistic Self</a>
+        <a class="current_page" href="my_artistic_self.html">My Artistic Self</a>
     </nav>
 
     <div class="centered_box heading">
@@ -108,7 +104,7 @@
         <p id="programming" class="keywords">Programming</p>
     </div>
 
-    <div>
+    <div class="body_wrapper">
         <h3>About this page</h3>
         <p>Vincent van Gogh's paining The Starry Night has stood out to me every since I was a child. 
             There is something about the colors, painting streaks, and atmosphere that makes the painting feel
@@ -119,6 +115,10 @@
             I feel that I have come a long way and have grown considerably. 
         </p>
     </div>
+
+    <footer>
+            <p>This website is made for the CS203 class!</p>
+    </footer>
 </body>
 
 </html>
