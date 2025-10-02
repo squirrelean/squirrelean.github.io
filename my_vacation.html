@@ -5,6 +5,7 @@
         <Title>My Trip to Italy</Title>
         <meta name="Daniel" content="Vacation">
         <meta charset="UTF-8">
+        <link rel="stylesheet" href="my_style.css">
 
         <style>
             img
@@ -12,7 +13,7 @@
                 float: right;
             }
 
-            p
+            .main_text
             {
                 float: right;
             }
@@ -24,13 +25,16 @@
         </style>
     </head>
 
-    <body style="background-color: bisque;">
-        <div>
+    <body>
+        <nav>
             <a href="index.html">Home Page</a>
-        </div>
-        <div class="main_section">
+            <a class="current_page" href="my_vacation.html">Vacation to Italy</a>
+            <a href="my_artistic_self.html">My Artistic Self</a>
+        </nav>
+        
+        <div class="body_wrapper" class="main_section">
             <h1>Italy 2025</h1>
-            <p>
+            <p class="main_text">
                 <img src="vacationforza.jpeg" style="border: 5px solid black; border-radius: 2%;" Picture of Forza Napoli" width="500" height="500">
                 On June 1st, 2025, I boarded my flight heading to Naples at the Montreal-Pierre Elliot Trudeau airport alongside my mother and sister. 
                 I would arrive at the Naples International Airport on June 2nd around noon, where I would then make my way down to San Giuseppe, 
@@ -38,5 +42,10 @@
                 notable advanetures was our visit to the ancient ruins of Pompeii. After spending a total of five days in Naples, we took a ferry
                 to the island of Sardinia, where we would remain for the majority of our vacation.
             </p>
+        </div>
+
+        <footer>
+            <p>This website is made for the CS203 class!</p>
+        </footer>
     </body>
 </html>
