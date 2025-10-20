@@ -10,14 +10,16 @@ function setNav(current_path)
 {
     current_path = splitAtRoot(current_path);
     let nav = document.getElementById("main-nav");
+    document.write("function exec");
     for (let child of nav.children)
     {
+        document.write("loop exec");
         if (child instanceof HTMLAnchorElement)
         {
             let page = child.href;
             page = splitAtRoot(page);
-            document.write("<br>current path: " + current_path);
-            document.write("page: " + page);
+            document.write("<p>current path: " + current_path);
+            document.write("page: " + page + "</p>");
             if (page === current_path)
             {
                 child.classList.add("current_page");
