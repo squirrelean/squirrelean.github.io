@@ -32,13 +32,11 @@
     </head>
     
     <body>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="my_vacation.html">Vacation to Italy</a>
-            <a href="my_artistic_self.html">My Artistic Self</a>
-            <a href="marketplace.html">Marketplace</a>
-            <a class="current_page" href="calculators.html">Calculators</a>
-        </nav>
+        <nav id="main-nav"></nav>
+        <script>
+            const current_path = location.pathname;
+            setNav(current_path);
+        </script>
 
         <!-- You may add headers or anything else you'd like -->
         <h1> Some calculators! </h1>

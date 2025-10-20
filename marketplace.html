@@ -6,13 +6,11 @@
     </head>
 
     <body>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="my_vacation.html">Vacation to Italy</a>
-            <a href="my_artistic_self.html">My Artistic Self</a>
-            <a class="current_page" href="marketplace.html">Marketplace</a>
-            <a href="calculators.html">Calculators</a>
-        </nav>
+        <nav id="main-nav"></nav>
+        <script>
+            const current_path = location.pathname;
+            setNav(current_path);
+        </script>
 
         <p>
             <script src="Lab5_files/1-marketplace.js"></script>
