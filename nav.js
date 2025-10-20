@@ -16,6 +16,8 @@ function setNav(current_path)
         {
             let page = child.href;
             page = splitAtRoot(page);
+            document.write("<br>current path: " + current_path);
+            document.write("page: " + page);
             if (page === current_path)
             {
                 child.classList.add("current_page");
