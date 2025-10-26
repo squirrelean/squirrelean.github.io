@@ -11,6 +11,18 @@ function validate(event)
         form_is_valid = false;
     }
 
+    const quest1 = document.querySelector('input[name="quest1"]:checked');
+    const quest2 = document.querySelector('input[name="quest2"]:checked');
+    const quest3 = document.querySelectorAll('input[name="quest3"]:checked');
+    const quest4 = document.querySelector('select[name="q4"]');
+    const quest5 = document.querySelectorAll('input[name="quest5"]:checked');
+
+    if (!quest1 || !quest2 || quest3.length === 0 || quest4.value === "" || quest5.length === 0)
+    {
+        window.alert("Please answer all questions before submitting.");
+        form_is_valid = false;
+    }
+
     if (!form_is_valid)
     {
         event.preventDefault();
