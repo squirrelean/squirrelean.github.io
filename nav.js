@@ -27,7 +27,9 @@ function setNav(current_path)
 fetch("nav.html")
 .then(r => r.text())
 .then(html => {
-    (document.getElementById("main-nav").innerHTML = html);
+    document.getElementById("main-nav").innerHTML = html;
+    const current_path = location.pathname;
+    setNav(current_path);
 })
 
 //.then(html => document.getElementById("main-nav").innerHTML = html);
