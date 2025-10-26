@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Quiz</title>
+        <meta name="Daniel" content="Quiz form">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="my_style.css">
+
+        <script src="nav.js"></script>
+    </head>
+
+    <body>
+        <nav id="main-nav">
+        </nav>
+        <script>
+            const current_path = location.pathname;
+            setNav(current_path);
+        </script>
+
+        <form>
+            <fieldset>
+                <legend>Quiz Form</legend>
+
+                <div>
+                    <label for="name">Enter your name:</label>
+                    <input type="text" name="name">
+                </div>
+                <div>
+                    <label for="email" name="email">Enter your email:</label>
+                    <input type="email" name="email">
+                </div>
+
+                <div>
+                    <h4>Who created the C programming language?</h4>
+                    <input type="radio" id="q1a" value="1A">
+                    <label for="q1a">Dennis Ritchie</label>
+
+                    <input type="radio" id="q1b" value="1B">
+                    <label for="q1b">Dennis Raynolds</label>
+
+                    <input type="radio" id="q1c" value="1C">
+                    <label for="q1c">Linus Torvalds</label>
+                </div>
+
+                <div>
+                    <h4>What language was developed by James Gosling at Sun Microsystems?</h4>
+                    <input type="radio" id="q1a" value="2A">
+                    <label for="q2a">C</label>
+
+                    <input type="radio" id="q1b" value="2B">
+                    <label for="q2b">Python</label>
+
+                    <input type="radio" id="q1c" value="2C">
+                    <label for="q2c">Java</label>
+                </div>
+
+                <div>
+                    <h4>What does the recursive acronum GNU stand for?</h4>
+                    <input type="checkbox" id="q3a" value="3A">
+                    <label for="q3a">Generic Number Compiler</label>
+
+                    <input type="checkbox" id="q3a" value="3A">
+                    <label for="q3a">GNU's Not Unix</label>
+
+                    <input type="checkbox" id="q3a" value="3A">
+                    <label for="q3a">Great Number Compiler</label>
+                </div>
+                
+            </fieldset>
+        </form>
+        
+    </body>
+</html>
