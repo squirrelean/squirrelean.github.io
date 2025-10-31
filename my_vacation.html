@@ -23,16 +23,16 @@
                 width: 90%;
             }
         </style>
+
+        <script src="nav.js"></script>
     </head>
 
     <body>
-        <nav>
-            <a href="index.html">Home Page</a>
-            <a class="current_page" href="my_vacation.html">Vacation to Italy</a>
-            <a href="my_artistic_self.html">My Artistic Self</a>
-            <a href="marketplace.html">Marketplace</a>
-            <a href="calculators.html">Calculators</a>
-        </nav>
+        <nav id="main-nav"></nav>
+        <script>
+            const current_path = location.pathname;
+            setNav(current_path);
+        </script>
         
         <div class="body_wrapper" class="main_section">
             <h1>Italy 2025</h1>

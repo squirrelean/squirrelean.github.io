@@ -5,6 +5,7 @@
 <head>
     <title>Artistic Page</title>
     <link rel="stylesheet" href="my_style.css">
+    <script src="nav.js"></script>
     <style>
         .centered_box
         {
@@ -85,13 +86,11 @@
 </head>
 
 <body>
-    <nav>
-        <a href="index.html">Home Page</a>
-        <a href="my_vacation.html">Vacation to Italy</a>
-        <a class="current_page" href="my_artistic_self.html">My Artistic Self</a>
-        <a href="marketplace.html">Marketplace</a>
-        <a href="calculators.html">Calculators</a>
-    </nav>
+    <nav id="main-nav"></nav>
+        <script>
+            const current_path = location.pathname;
+            setNav(current_path);
+        </script>
 
     <div class="centered_box heading">
         <h2>The Starry Night</h2>

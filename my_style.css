@@ -102,4 +102,41 @@ html, body
     background-color: #F6A3E2;
 }
 
+form
+{
+    color: #4B3B61;
+    background-color: #F4ECFF;
+    font-family: monospace, sans-serif;
+    border-radius: 10px;
+}
+
+fieldset
+{
+    border: 5px solid #957DAD;
+    border-radius: 10px;
+    padding: 25px;
+}
+
+legend
+{
+    font-size: 25px;
+    font-weight: bold;
+    color: #957DAD;
+}
+
+button, input[type="submit"]
+{
+    background-color: #957DAD;
+    color: #F4C4CB;
+    border-radius: 12px;
+    border: 1px solid black;
+    font-size: 30px;
+    padding: 8px;
+}
+
+button:hover, input[type="submit"]:hover
+{
+    background-color: #F6A3E2;
+    color: white;
+}
 
