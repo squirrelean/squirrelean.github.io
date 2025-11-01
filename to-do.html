@@ -11,7 +11,12 @@
     </head>
 
     <body>
-        <nav id="main-nav"></nav>
+        <nav id="main-nav">
+        </nav>
+        <script>
+            const current_path = location.pathname;
+            setNav(current_path);
+        </script>
         
         <form onsubmit="addItem(event)">
             <fieldset>
@@ -30,7 +35,7 @@
             <ul id="todo_items">
             </ul>
         </div>
-        
+
         <script src="todo.js"></script>
     </body>
 </html>
