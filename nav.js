@@ -9,12 +9,6 @@ function setNav(current_path)
 {
     current_path = splitAtRoot(current_path);
 
-    fetch("nav.html")
-    .then(r => r.text())
-    .then(html => {
-    document.getElementById("main-nav").innerHTML = html;
-    })
-
     let nav = document.getElementById("main-nav");
     for (let child of nav.children)
     {
@@ -31,7 +25,7 @@ function setNav(current_path)
     
 }
 
-/*
+
 fetch("nav.html")
 .then(r => r.text())
 .then(html => {
@@ -39,4 +33,3 @@ fetch("nav.html")
     const current_path = location.pathname;
     setNav(current_path);
 })
-*/
