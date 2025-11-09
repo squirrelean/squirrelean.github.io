@@ -12,7 +12,7 @@ th, td
 {
     border: 3px solid black;
     padding: 5px;
-    
+
 }
 
 .main_section
@@ -89,7 +89,7 @@ html, body
 ::-webkit-scrollbar-track
 {
     background-color: #877fd7;
-    
+
 }
 
 ::-webkit-scrollbar-thumb
@@ -139,4 +139,26 @@ button:hover, input[type="submit"]:hover
     background-color: #F6A3E2;
     color: white;
 }
+
+.quiz_results
+{
+    background-color: #F4ECFF;
+    border-radius: 10px;
+    font-size: 3vh;
+}
+
+.quiz_results thead
+{
+    background-color: #957DAD;
+    color: #F4C4CB;
+}
+
+.quiz_results tr.highlight
+{
+    background-color: #957DAD;
+    font-weight: bold;
+}
+
+
+
 
