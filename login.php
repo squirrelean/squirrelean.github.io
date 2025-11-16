@@ -8,18 +8,18 @@
 
     $ok = session_start();
 
-    if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true)
-    {
-        $BASE_URL = $_SERVER['HTTP_HOST'] . '/danastasio/';
-        header('Location: http://' . $BASE_URL . 'to-do.php');
-        exit();
-    }
-
     if (isset($_POST['logout']))
     {
         session_destroy();
         session_start();
         $logout_message = "Successfully logged out";
+    }
+
+    if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true)
+    {
+        $BASE_URL = $_SERVER['HTTP_HOST'] . '/danastasio/';
+        header('Location: http://' . $BASE_URL . 'to-do.php');
+        exit();
     }
 
     $is_incorrect = false;
