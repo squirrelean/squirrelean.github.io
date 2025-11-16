@@ -12,7 +12,7 @@ th, td
 {
     border: 3px solid black;
     padding: 5px;
-    
+
 }
 
 .main_section
@@ -89,7 +89,7 @@ html, body
 ::-webkit-scrollbar-track
 {
     background-color: #877fd7;
-    
+
 }
 
 ::-webkit-scrollbar-thumb
@@ -140,47 +140,25 @@ button:hover, input[type="submit"]:hover
     color: white;
 }
 
-.slideshow
+.quiz_results
 {
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 85%;
-    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
-    color: white;
-    font-size: xx-large;
-    font-style: oblique;
+    background-color: #F4ECFF;
+    border-radius: 10px;
+    font-size: 3vh;
 }
 
-#previous_link
+.quiz_results thead
 {
-    position: absolute;
-    top: 50%;
-    left: 1%;
+    background-color: #957DAD;
+    color: #F4C4CB;
 }
 
-#next_link
+.quiz_results tr.highlight
 {
-    position: absolute;
-    top: 50%;           
-    right: 1%;          
+    background-color: #957DAD;
+    font-weight: bold;
 }
 
-li
-{
-    display: flex;
-    align-items: center;
-    border: 1px dotted black;
-    justify-content: space-between;
-    padding: 10px;
-}
 
-li span.fas.fa-trash:hover
-{
-    color: red;
-}
 
-li span.fas.fa-trash 
-{
-    cursor: pointer;
-}
+

@@ -7,17 +7,14 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="my_style.css">
-
-        <script src="nav.js"></script>
     </head>
-    
+
     <body>
-        <nav id="main-nav">
-        </nav>
-        <script>
-            const current_path = location.pathname;
-            setNav(current_path);
-        </script>
+         <?php
+         $current_page = 'home';
+         error_reporting(E_ALL);
+         ini_set("display_errors", 1);
+         include('nav.php'); ?>
 
         <div>
             <div title="This is me!">
@@ -33,7 +30,7 @@
 
             <div class="body_wrapper" class="main_section">
                 <p>
-                    Welcome to my page, visitor! I am a second semester computer science student interested in low-level and systems 
+                    Welcome to my page, visitor! I am a second semester computer science student interested in low-level and systems
                     software engineering.
                 </p>
 
@@ -41,19 +38,19 @@
 
                 <h3>Seeds of Sound</h3>
                 <p>
-                    Near the end of my first semester, I was brought to the attention of the Seeds of Sound art project, which required 
+                    Near the end of my first semester, I was brought to the attention of the Seeds of Sound art project, which required
                     hardware from old phones to be repurposed to play specific audio through the phones speaker when picked up. This
-                    project would require redesigning the phones internal layout, modifying PCB traces, working with microcontrollers, 
-                    and soldering, which is why the schools art departement came to us for help. Over the next couple of months, all five of us 
+                    project would require redesigning the phones internal layout, modifying PCB traces, working with microcontrollers,
+                    and soldering, which is why the schools art departement came to us for help. Over the next couple of months, all five of us
                     would get together in the CS study room whenever we had free time to work on this project. During our work sessions,
-                    we faced issues like: 
+                    we faced issues like:
                     <ul>
                         <li>Oversized push buttons &amp microcontroller boards</li>
                         <li>Phone chassis size limitations</li>
                         <li>Damaged hardware in the old phones</li>
                     </ul>
-                    but were able to overcome these challenges through careful planning, engineering, ingenuity, and some pizza. Shortly after the 
-                    start of the following semester, we found out that the project we worked so tirelessly on will be featured in the flagship 
+                    but were able to overcome these challenges through careful planning, engineering, ingenuity, and some pizza. Shortly after the
+                    start of the following semester, we found out that the project we worked so tirelessly on will be featured in the flagship
                     <strong>United Nations World Food Forum</strong> event on October 10, 2025.
                 </p>
 
@@ -75,34 +72,9 @@
             </table>
         </div>
 
-        <div class="slideshow">
-            <h3 style="color: #F3BB9A">My vacation slideshow</h3>
-            <div class="slideshow_img">
-                <img src="img1.jpg" width="100%">
-            </div>
-
-            <div class="slideshow_img">
-                <img src="img2.jpg" width="100%">
-            </div>
-
-            <div class="slideshow_img">
-                <img src="img4.jpg" width="100%">
-            </div>
-
-            <div class="slideshow_img">
-                <img src="img3.jpg" width="100%">
-            </div>
-
-            <a onclick="previous()" id="previous_link">Previous</a>
-            <a onclick="next()" id="next_link">Next</a>
-
-        </div>
-
-        <footer>
-            <p>This website is made for the CS203 class!</p>
-        </footer>
-
-        <script src="slideshow.js"></script>
+        <?php
+            include('footer.php');
+        ?>
     </body>
 
 </html>

@@ -8,19 +8,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="my_style.css">
 
-        <script src="nav.js"></script>
         <script src="form.js"></script>
     </head>
 
     <body>
-        <nav id="main-nav">
-        </nav>
-        <script>
-            const current_path = location.pathname;
-            setNav(current_path);
-        </script>
+        <?php
+         $current_page = 'form';
+         error_reporting(E_ALL);
+         ini_set("display_errors", 1);
+         include('nav.php'); ?>
 
-        <form onsubmit="return validate(event)">
+        <form onsubmit="return validate(event)" action="quiz_verification.php" method="get">
             <fieldset>
                 <legend>Quiz Form</legend>
 
@@ -62,19 +60,19 @@
                     <input type="checkbox" id="q3a" value="3A" name="quest3">
                     <label for="q3a">Generic Number Compiler</label>
 
-                    <input type="checkbox" id="q3a" value="3A" name="quest3">
+                    <input type="checkbox" id="q3a" value="3B" name="quest3">
                     <label for="q3a">GNU's Not Unix</label>
 
-                    <input type="checkbox" id="q3a" value="3A" name="quest3">
+                    <input type="checkbox" id="q3a" value="3C" name="quest3">
                     <label for="q3a">Great Number Compiler</label>
                 </div>
 
                 <div>
                     <h4>Languages</h4>
-                    <label for="quest4">Which of the following programming languages are you most comfortable with?</label>
+                    <label for="quest4">Which of the following programming languages was created first?</label>
                     <select name="quest4">
                         <option value="">Select one</option>
-                        <option value="C">C/C++</option>
+                        <option value="C">C</option>
                         <option value="Java">Java</option>
                         <option value="Python">Python</option>
                         <option value="Javascript">Javascript</option>
@@ -83,13 +81,13 @@
 
                 <div>
                     <h4>What does BIOS stand for?</h4>
-                    <input type="checkbox" id="q4a" value="4A" name="quest5">
+                    <input type="checkbox" id="q4a" value="5A" name="quest5">
                     <label for="q4a">Binary Input Output System</label>
 
-                    <input type="checkbox" id="q4b" value="4B" name="quest5">
+                    <input type="checkbox" id="q4b" value="5B" name="quest5">
                     <label for="q4b">Basic Input Output System</label>
 
-                    <input type="checkbox" id="q4c" value="4C" name="quest5">
+                    <input type="checkbox" id="q4c" value="5C" name="quest5">
                     <label for="q4c">Boosted Input Output System</label>
                 </div>
                 <br>
@@ -97,13 +95,13 @@
                     <h1>Submit your answer!</h1>
                     <input type="submit" value="submit">
                 </div>
-                
+
             </fieldset>
         </form>
 
-        <footer>
-            <p>This website is made for the CS203 class!</p>
-        </footer>
-        
+        <?php
+            include('footer.php');
+        ?>
+
     </body>
 </html>

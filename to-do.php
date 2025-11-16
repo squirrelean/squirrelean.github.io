@@ -12,13 +12,12 @@
     </head>
 
     <body>
-        <nav id="main-nav">
-        </nav>
-        <script>
-            const current_path = location.pathname;
-            setNav(current_path);
-        </script>
-        
+        <?php
+         $current_page = 'todo';
+         error_reporting(E_ALL);
+         ini_set("display_errors", 1);
+         include('nav.php'); ?>
+
         <form onsubmit="addItem(event)">
             <fieldset>
                 <legend>Add a to-do item!</legend>
@@ -39,8 +38,8 @@
 
         <script src="todo.js"></script>
 
-        <footer>
-            <p>This website is made for the CS203 class!</p>
-        </footer>
+        <?php
+            include('footer.php');
+        ?>
     </body>
 </html>

@@ -6,9 +6,8 @@
         <script src="Lab5_files/2-calculator.js"> </script>
         <script src="Lab5_files/2-calculator_utils.js"> </script>
         <link rel="stylesheet" href="my_style.css">
-        <script src="nav.js"></script>
-        
-        <style> 
+
+        <style>
             .calculator_div{
                 max-width: 45%;
             }
@@ -16,12 +15,12 @@
                 .calculator_div{
                     max-width: 75%;
                 }
-            }           
-            
+            }
+
             .calculator_div div, fieldset{
                 margin-top: 20px;
             }
-            
+
             .answer{
                 background-color: LightGray;
             }
@@ -31,22 +30,22 @@
             }
         </style>
     </head>
-    
-    <body>
-        <nav id="main-nav"></nav>
-        <script>
-            const current_path = location.pathname;
-            setNav(current_path);
-        </script>
+
+    <body style="padding-bottom: 80%;">
+        <?php
+         $current_page = 'calculators';
+         error_reporting(E_ALL);
+         ini_set("display_errors", 1);
+         include('nav.php'); ?>
 
         <!-- You may add headers or anything else you'd like -->
         <h1> Some calculators! </h1>
 
-        
+
         <!-- Main calculator section -->
         <div class="calculator_div">
-        
-        
+
+
             <!-- Calcultor 1: your age in terms of days -->
             <fieldset>
                 <legend> How old are you terms of days? </legend>
@@ -62,8 +61,8 @@
                     <p id="p_answer_days"> (click submit first!) </p>
                 </div>
             </fieldset>
-            
-            
+
+
             <!-- Calcultor 2: your age in terms of days -->
             <fieldset class="right">
                 <legend> The radius and area of the biggest circle fitting in your screen </legend>
@@ -75,8 +74,8 @@
                     <p id="p_answer_circle"> (click submit first!) </p>
                 </div>
             </fieldset>
-            
-            
+
+
             <!-- Calcultor 3: Palindrome checker -->
             <fieldset>
                 <legend> Palindrome checker </legend>
@@ -91,8 +90,8 @@
                     <p id="p_answer_palindrome"> (click submit first!) </p>
                 </div>
             </fieldset>
-            
-            
+
+
             <!-- Calcultor 4: Fibonnacci -->
             <fieldset class="right">
                 <legend> Fibonacci </legend>
@@ -108,8 +107,9 @@
                     <p id="p_answer_fibo"> (click submit first!) </p>
                 </div>
             </fieldset>
-                
-                
         </div>
+        <?php
+            include('footer.php');
+        ?>
     </body>
 </html>
