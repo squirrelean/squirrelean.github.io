@@ -8,20 +8,7 @@
 
     $ok = session_start();
 
-    $logout = false;
-    if (isset($_POST['logout']))
-    {
-        session_destroy();
-        session_start();
-        $logout = true;
-    }
-
-    if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true)
-    {
-        $BASE_URL = $_SERVER['HTTP_HOST'] . '/danastasio/';
-        header('Location: http://' . $BASE_URL . 'to-do.php');
-        exit();
-    }
+    $attempt = null;
 
     $is_incorrect = false;
 
@@ -31,8 +18,7 @@
     $password_entered = '';
     $username = '';
 
-    $attempt = null;
-    $time_remaining = null;
+    $lockout_remaining = null;
 
     // Load existing attempts
     $file = 'login_attempts.json';
@@ -44,6 +30,29 @@
     {
         $attempts = [];
     }
+
+    $logout = false;
+    if (isset($_POST['logout']))
+    {
+        $username = $_COOKIE['username'];
+
+        session_destroy();
+        session_start();
+
+        $attempts[$username] = ['attempts' => 0, 'locked_until' => 0];
+
+        file_put_contents($file, json_encode($attempts));
+
+        $logout = true;
+    }
+
+    if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true)
+    {
+        $BASE_URL = $_SERVER['HTTP_HOST'] . '/danastasio/';
+        header('Location: http://' . $BASE_URL . 'to-do.php');
+        exit();
+    }
+
 
     //$hashed_password_entered = '';
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$logout)
@@ -63,7 +72,7 @@
 
         if ($attempts[$username]['locked_until'] > time())
         {
-            $time_remaining = $attempts[$username]['locked_until'] - time();
+            $lockout_remaining = $attempts[$username]['locked_until'] - time();
             file_put_contents($file, json_encode($attempts));
         }
         else
@@ -101,7 +110,7 @@
                 if ($attempts[$username]['attempts'] >= 3)
                 {
                     $attempts[$username]['locked_until'] = time() + 30;
-                    $time_remaining = 30;
+                    $lockout_remaining = 30;
                     $attempts[$username]['attempts'] = 0;
                 }
             }
