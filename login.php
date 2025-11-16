@@ -8,11 +8,12 @@
 
     $ok = session_start();
 
+    $logout = false;
     if (isset($_POST['logout']))
     {
         session_destroy();
         session_start();
-        $logout_message = "Successfully logged out";
+        $logout = true;
     }
 
     if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true)
@@ -112,50 +113,53 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Login</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="my_style.css">
-</head>
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="my_style.css">
+    </head>
 
-<body>
-
-<form action="login.php" method="post">
-    <fieldset>
-        <legend>Login Required</legend>
-
-        <div>
-            <label for="username">Enter the username:</label>
-            <input type="text" name="username" value="<?php echo isset($_COOKIE['username']) ? $_COOKIE['username'] : ''; ?>">
-        </div>
-        <br>
-
-        <div>
-            <label for="password">Enter the password:</label>
-            <input type="password" name="password">
-        </div>
-
-        <br>
-        <div>
-            <input type="submit" value="Login">
-        </div>
-
-        <?php if ($is_incorrect || $time_remaining !== null): ?>
-            <p style="color: red; font-weight: bold;">
-                <?php if ($is_incorrect && $attempt !== null && $time_remaining === null): ?>
-                    Wrong password. This is attempt # <?php echo $attempt; ?><br>
-                <?php endif; ?>
-
-                <?php if ($time_remaining !== null): ?>
-                    Three wrong attempts. Locked out for <?php echo $time_remaining; ?> seconds
-                <?php endif; ?>
-            </p>
+    <body>
+        <?php if ($logout): ?>
+            <p>Sucessfully logged out</p>
         <?php endif; ?>
 
-    </fieldset>
-</form>
+        <form action="login.php" method="post">
+            <fieldset>
+                <legend>Login Required</legend>
 
-<?php include('footer.php'); ?>
+                <div>
+                    <label for="username">Enter the username:</label>
+                    <input type="text" name="username" value="<?php echo isset($_COOKIE['username']) ? $_COOKIE['username'] : ''; ?>">
+                </div>
+                <br>
 
-</body>
+                <div>
+                    <label for="password">Enter the password:</label>
+                    <input type="password" name="password">
+                </div>
+
+                <br>
+                <div>
+                    <input type="submit" value="Login">
+                </div>
+
+                <?php if ($is_incorrect || $time_remaining !== null): ?>
+                    <p style="color: red; font-weight: bold;">
+                        <?php if ($is_incorrect && $attempt !== null && $time_remaining === null): ?>
+                            Wrong password. This is attempt # <?php echo $attempt; ?><br>
+                        <?php endif; ?>
+
+                        <?php if ($time_remaining !== null): ?>
+                            Three wrong attempts. Locked out for <?php echo $time_remaining; ?> seconds
+                        <?php endif; ?>
+                    </p>
+                <?php endif; ?>
+
+            </fieldset>
+        </form>
+
+    <?php include('footer.php'); ?>
+
+    </body>
 </html>
