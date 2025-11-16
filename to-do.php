@@ -7,7 +7,7 @@
 
     if (!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] !== true)
     {
-        $BASE_URL = $_SERVER['HTTP_HOST'] . '/danastasio/';
+        $BASE_URL = $_SERVER['HTTP_HOST'] . '/home/danastasio/CSLAB/';
         header('Location: http://' . $BASE_URL . 'login.php');
         exit();
     }
