@@ -153,14 +153,14 @@
                     <input type="submit" value="Login">
                 </div>
 
-                <?php if ($is_incorrect || $time_remaining !== null): ?>
+                <?php if ($is_incorrect || $lockout_remaining !== null): ?>
                     <p style="color: red; font-weight: bold;">
-                        <?php if ($is_incorrect && $attempt !== null && $time_remaining === null): ?>
+                        <?php if ($is_incorrect && $attempt !== null && $lockout_remaining === null): ?>
                             Wrong password. This is attempt # <?php echo $attempt; ?><br>
                         <?php endif; ?>
 
-                        <?php if ($time_remaining !== null): ?>
-                            Three wrong attempts. Locked out for <?php echo $time_remaining; ?> seconds
+                        <?php if ($lockout_remaining !== null): ?>
+                            Three wrong attempts. Locked out for <?php echo $lockout_remaining; ?> seconds
                         <?php endif; ?>
                     </p>
                 <?php endif; ?>
