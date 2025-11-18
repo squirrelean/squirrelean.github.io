@@ -1,3 +1,38 @@
+<?php
+
+    require_once('includes/config.php');
+
+    $ok = session_start();
+
+
+    if (!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] !== true)
+    {
+        $BASE_URL = $_SERVER['HTTP_HOST'] . '/home/danastasio/CSLAB/';
+        header('Location: http://' . $BASE_URL . 'login.php');
+        exit();
+    }
+
+    if(isset($_COOKIE['username']))
+    {
+        $username = $_COOKIE['username'];
+    }
+    else
+    {
+        $username = '';
+    }
+?>
+
+<?php
+    $current_page = 'todo';
+    error_reporting(E_ALL);
+    ini_set("display_errors", 1);
+    include('nav.php'); ?>
+
+    <?php
+        if ($username !== ''): ?>
+            <h2>Welcome back, <?php echo htmlspecialchars($username); ?>!</h2>
+        <?php endif; ?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -12,11 +47,10 @@
     </head>
 
     <body>
-        <?php
-         $current_page = 'todo';
-         error_reporting(E_ALL);
-         ini_set("display_errors", 1);
-         include('nav.php'); ?>
+
+        <form action="login.php" method="post" style="text-align: right; background-color: transparent">
+            <button type="submit" name="logout">Log out</button>
+        </form>
 
         <form onsubmit="addItem(event)">
             <fieldset>
