@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "title": "First Post",
+    "date": "2025-11-01",
+    "paragraphs": [
+      "Paragraph 1 text...",
+      "Paragraph 2 text..."
+    ]
+  },
+
+  {
+    "id": 2,
+    "title": "Second Post",
+    "date": "2025-15-01",
+    "paragraphs": [
+      "Paragraph 1 text...",
+      "Paragraph 2 text..."
+    ]
+  }
+]
