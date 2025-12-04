@@ -13,14 +13,11 @@
 
 
     // Load blog posts into an array from blogs.json.
-    $blog_path = '/workspaces/211031247/squirrelean.github.io/blogs.json';
+    //$blog_path = '/workspaces/211031247/squirrelean.github.io/blogs.json';
+    $blog_path = __DIR__ . '/blogs.json'; // This may be more efficient for osiris.
     $blogs = [];
     $json_file = file_get_contents($blog_path);
     $blogs = json_decode($json_file, true);
-
-
-
-
 ?>
 
 
@@ -41,16 +38,20 @@
 
     <body>
         <div>
-            <button id="theme" class="btn btn-secondary mt-2 ml-2">Change Theme</button>
+            <button id="change_theme" class="btn btn-secondary mt-2 ml-2 float-right">Change Theme</button>
 
-            <!-- Add new posts if logged in -->
+            <!-- Check if the user is logged in -->
             <?php if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true): ?>
-                <a href="add_post.php" class="btn btn-success mt-2">Add Post</a>
+                <!-- Show the button to add a new post -->
+                <a href="add_new_blog.php" class="btn btn-outline-success mt-2">Add Post</a>
+
+                <!-- Show a logout button  -->
                 <form action="login.php" method="post" style="background: transparent">
-                    <button class="btn btn-outline-secondary mt-2" type="submit" name="logout">Logout</button>
+                    <button class="btn btn-outline-dark mt-2 ml-2 float-right" type="submit" name="logout">Logout</button>
                 </form>
+
             <?php else: ?>
-                <a href="login.php" class="btn btn-primary mt-2 float-right">Login</a>
+                <a href="login.php" class="btn btn-secondary mt-2 ml-2 float-right">Login</a>
             <?php endif; ?>
         </div>
 
@@ -58,8 +59,8 @@
         <div class="container mt-4">
             <header class="jumbotron p-4 text-dark rounded">
                 <div class="container">
-                    <h1 class="display-4"></h1>
-                    <p class="lead">Welcome to my blog.</p>
+                    <h1 class="display-4">SqrlBlog</h1>
+                    <p class="lead">Created to showcase some of my personal projects.</p>
                 </div>
             </header>
         </div>
@@ -67,7 +68,7 @@
         <!-- Contains blog posts and aside section-->
         <div class="row">
 
-        <!-- Blog posts -->
+        <!-- Blog Section -->
         <div class="col-md-8">
             <?php
                 // Load each blog array
@@ -77,15 +78,20 @@
                     $date = $blog['date'];
                     ?>
 
-                    <!-- Delete button above every blog only for logged in users -->
-                    <?php if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true): ?>
-                        <button class="btn btn-danger btn-sm delete-btn" id="<?=$id?>">Delete</button>
-                    <?php endif; ?>
-
                     <article id="<?=$blog_id?>" class="post card mb-3">
+
+                        <!-- Delete button above every blog only for logged in users -->
+                        <?php if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true): ?>
+                            <form action="delete_post.php" method="post" style="background: transparent">
+                                <input type="hidden" name="id" value="<?=$blog_id?>">
+                                <button type="button" class="btn btn-danger btn-sm delete-btn float-right" data-id="<?=$blog_id?>">Delete</button>
+                            </form>
+                        <?php endif; ?>
+
+                        <!-- Blog posts -->
                         <div class="card-body">
                             <h3 class="card-title"> <?=$title?> </h3>
-                            <p class="card-subtitle mb-2 text-muted">Date: <?=$date?> </p>
+                            <p class="card-subtitle mb-2">Date: <?=$date?> </p>
 
                             <div>
                                 <?php
@@ -97,8 +103,7 @@
                             </div>
                         </div>
                     </article>
-                <?php
-                endforeach;
+                <?php endforeach;
             ?>
         </div>
 
@@ -106,13 +111,13 @@
         <aside class="col-md-4">
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5>Posts</h5>
+                    <h5>Blog Posts</h5>
                     <hr>
-                    <ul id="post-list" class="list-unstyled">
+                    <ul class="list-unstyled">
                         <?php
                             foreach ($blogs as $blog): ?>
                             <li>
-                                <a href="#post-<?=$blog['id']?>">
+                                <a href="#<?=$blog['id']?>">
                                     <?=$blog['title']?>
                                 </a>
                             </li>
