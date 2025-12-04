@@ -159,6 +159,20 @@ button:hover, input[type="submit"]:hover
     font-weight: bold;
 }
 
+.dark_mode
+{
+    background-color: #121212;
+    color: oldlace;
+}
+
+.dark_mode .card, .dark_mode .jumbotron,
+.dark_mode nav, .dark_mode h1,
+.dark_mode p, .dark_mode a
+{
+    background-color: dimgrey;
+    color: oldlace;
+}
+
 
 
 
