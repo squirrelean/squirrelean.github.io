@@ -27,4 +27,8 @@
     <a href="login.php" class=
     <?php ($current_page === 'todo')?'active':'' ?>
     >To-Do List</a>
+
+    <a href="blog.php" class=
+    <?php ($current_page === 'blog')?'active':'' ?>
+    >Blog Post</a>
 </nav>
