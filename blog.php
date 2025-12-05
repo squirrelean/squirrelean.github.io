@@ -37,6 +37,8 @@
     </head>
 
     <body>
+        <canvas id="canvas_animation"></canvas>
+
         <div>
             <button id="change_theme" class="btn btn-secondary mt-2 ml-2 float-right">Change Theme</button>
 
@@ -54,7 +56,6 @@
                 <a href="login.php" class="btn btn-secondary mt-2 ml-2 float-right">Login</a>
             <?php endif; ?>
         </div>
-
         <!-- Hero section -->
         <div class="container mt-4">
             <header class="jumbotron p-4 text-dark rounded">
@@ -68,44 +69,54 @@
         <!-- Contains blog posts and aside section-->
         <div class="row">
 
-        <!-- Blog Section -->
-        <div class="col-md-8">
-            <?php
-                // Load each blog array
-                foreach ($blogs as $blog):
-                    $blog_id = $blog['id'];
-                    $title = $blog['title'];
-                    $date = $blog['date'];
-                    ?>
+            <!-- Blog Section -->
+            <div class="col-md-8">
 
-                    <article id="<?=$blog_id?>" class="post card mb-3">
+                <!-- Search bar -->
+                <input id="search_bar" class="form-control mb-2" type="text" placeholder="Search for a post">
 
-                        <!-- Delete button above every blog only for logged in users -->
-                        <?php if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true): ?>
-                            <form action="delete_post.php" method="post" style="background: transparent">
-                                <input type="hidden" name="id" value="<?=$blog_id?>">
-                                <button type="button" class="btn btn-danger btn-sm delete-btn float-right" data-id="<?=$blog_id?>">Delete</button>
-                            </form>
-                        <?php endif; ?>
+                <!-- Sorting option to sort through posts by their date -->
+                <select id="sorting_option" class="form-control mb-2 col-md-2">
+                    <option value="newest">Sort by newest</option>
+                    <option value="oldest">Sort by oldest</option>
+                </select>
 
-                        <!-- Blog posts -->
-                        <div class="card-body">
-                            <h3 class="card-title"> <?=$title?> </h3>
-                            <p class="card-subtitle mb-2">Date: <?=$date?> </p>
+                <?php
+                    // Load each blog array
+                    foreach ($blogs as $blog):
+                        $blog_id = $blog['id'];
+                        $title = $blog['title'];
+                        $date = $blog['date'];
+                        ?>
 
-                            <div>
-                                <?php
-                                foreach ($blog['paragraphs'] as $paragraph)
-                                {
-                                    echo '<p>'.$paragraph.'</p>';
-                                }
-                                ?>
+                        <article id="<?=$blog_id?>" class="post card mb-3">
+
+                            <!-- Delete button above every blog only for logged in users -->
+                            <?php if (isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true): ?>
+                                <form action="delete_post.php" method="post" style="background: transparent">
+                                    <input type="hidden" name="id" value="<?=$blog_id?>">
+                                    <button type="button" class="btn btn-danger btn-sm delete-btn float-right" data-id="<?=$blog_id?>">Delete</button>
+                                </form>
+                            <?php endif; ?>
+
+                            <!-- Blog posts -->
+                            <div class="card-body">
+                                <h3 class="card-title"> <?=$title?></h3>
+                                <p class="card-subtitle mb-2">Date: <?=$date?></p>
+                                <div class="card-text">
+                                    <?php
+                                    foreach ($blog['paragraphs'] as $paragraph)
+                                    {
+                                        echo '<p>'.$paragraph.'</p>';
+                                    }
+                                    ?>
+                                </div>
+                                <span class="collapsible">......</span>
                             </div>
-                        </div>
-                    </article>
-                <?php endforeach;
-            ?>
-        </div>
+                        </article>
+                    <?php endforeach;
+                ?>
+            </div>
 
         <!-- Aside section -->
         <aside class="col-md-4">
@@ -131,8 +142,8 @@
     </div>
 </div>
 
-
         <script src="blog.js"></script>
+        <script src="canvas.js"></script>
     </body>
 
 </html>
